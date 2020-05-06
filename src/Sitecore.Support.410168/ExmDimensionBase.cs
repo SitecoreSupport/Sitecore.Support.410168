@@ -84,8 +84,11 @@ namespace Sitecore.Support.EmailCampaign.ExperienceAnalytics.Dimensions
 
             VisitData visit = context.Visit;
 
-            if (!(context.Visit.CustomValues.First().Value is Interaction interaction))
+            Interaction interaction = null;
+
+            if (!(context.Visit.CustomValues.First().Value is Interaction))
             {
+                interaction = context.Visit.CustomValues.First().Value as Interaction;
                 return dimensions;
             }
 
@@ -243,7 +246,9 @@ namespace Sitecore.Support.EmailCampaign.ExperienceAnalytics.Dimensions
 
             string key = exmKeyBehaviorCache.GetUniqueEventDictionaryKey(emailEvent.MessageId, emailEvent.InstanceId, emailEventType);
 
-            if (!exmKeyBehaviorCache.UniqueEvents.TryGetValue(key, out Guid eventId))
+            Guid eventId = new Guid();
+
+            if (!exmKeyBehaviorCache.UniqueEvents.TryGetValue(key, out eventId))
             {
                 return false;
             }
