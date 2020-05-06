@@ -47,7 +47,7 @@ namespace Sitecore.Support.EmailCampaign.ExperienceAnalytics.Dimensions
         {
             if (exmEvent.MessageLanguage == null)
             {
-                Logger.LogDebug(string.Format(CultureInfo.InvariantCulture, Sitecore.Support.EmailCampaign.ExperienceAnalytics.Properties.Settings.Default.VisitAggregationStateParameterIsNullOrEmptyMessagePattern, "MessageLanguage", GetType().Name));
+                Logger.LogDebug("Parameter 'MessageLanguage' of VisitAggregationState is null. Setting it to 'en'");
                 exmEvent.MessageLanguage = "en";
             }
 
