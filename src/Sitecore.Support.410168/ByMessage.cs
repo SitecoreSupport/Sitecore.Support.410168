@@ -11,8 +11,10 @@ using Sitecore.EmailCampaign.XConnect.Web;
 using Sitecore.ExM.Framework.Diagnostics;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
+using Sitecore.EmailCampaign.ExperienceAnalytics.Dimensions;
+using Sitecore.EmailCampaign.ExperienceAnalytics;
 
-namespace Sitecore.EmailCampaign.ExperienceAnalytics.Dimensions
+namespace Sitecore.Support.EmailCampaign.ExperienceAnalytics.Dimensions
 {
     /// <summary>
     /// Implementation of dimension by message.
@@ -45,9 +47,8 @@ namespace Sitecore.EmailCampaign.ExperienceAnalytics.Dimensions
         {
             if (exmEvent.MessageLanguage == null)
             {
-                Logger.LogDebug(string.Format(CultureInfo.InvariantCulture, Sitecore.Support.EmailCampaign.ExperienceAnalytics.Properties.Settings.Default.VisitAggregationStateParameterIsNullOrEmptyMessagePattern,
-                    "MessageLanguage", GetType().Name));
-                return null;
+                Logger.LogDebug(string.Format(CultureInfo.InvariantCulture, Sitecore.Support.EmailCampaign.ExperienceAnalytics.Properties.Settings.Default.VisitAggregationStateParameterIsNullOrEmptyMessagePattern, "MessageLanguage", GetType().Name));
+                exmEvent.MessageLanguage = "en";
             }
 
             var isProductive = false;
