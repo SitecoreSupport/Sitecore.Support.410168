@@ -88,10 +88,9 @@ namespace Sitecore.Support.EmailCampaign.ExperienceAnalytics.Dimensions
 
             if (!(context.Visit.CustomValues.First().Value is Interaction))
             {
-                interaction = context.Visit.CustomValues.First().Value as Interaction;
                 return dimensions;
             }
-
+            interaction = context.Visit.CustomValues.First().Value as Interaction;
             Logger.LogDebug($"Processing {GetType()} dimension on Interaction {visit.InteractionId}");
 
             try
